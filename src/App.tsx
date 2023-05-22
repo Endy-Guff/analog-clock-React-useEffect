@@ -14,9 +14,12 @@ function App() {
     let[date, setDate] = useState(new Date())
 
     useEffect(()=>{
-        setInterval(()=>{
+        const intervalId = setInterval(()=>{
             setDate(new Date())
         }, 1000)
+        return () =>{
+            clearInterval(intervalId)
+        }
     }, [])
     return (
         <div className="App">
